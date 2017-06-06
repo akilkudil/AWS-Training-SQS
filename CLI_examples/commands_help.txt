@@ -3,5 +3,21 @@
 aws sqs list-queues --queue-name-prefix "test"
 
 2. Create queue
+aws sqs create-queue --queue-name "test123" --attributes file://C:/SPB_Data/AWS-Training-SQS/sampledata/input/createQueue1.json
 
-aws sqs create-queue --queue-name "test123" --attributes "MessageRetentionPeriod": "259200"
+
+3. Get URL of the queue
+
+aws sqs get-queue-url --queue-name "test423"
+
+4. delete a queue
+
+aws sqs delete-queue --queue-url "https://queue.amazonaws.com/814129119746/test423"
+
+5. Send Message (max message body size 256KB)
+
+aws sqs send-message --queue-url "https://queue.amazonaws.com/814129119746/test123" --message-body "I like this"
+
+6.Receive message
+
+aws sqs receive-message --queue-url "https://queue.amazonaws.com/814129119746/test123" 
