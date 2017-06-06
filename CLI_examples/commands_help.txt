@@ -1,0 +1,7 @@
+1. List queue
+
+aws sqs list-queues --queue-name-prefix "test"
+
+2. Create queue
+
+aws sqs create-queue --queue-name "test123" --attributes "MessageRetentionPeriod": "259200"
