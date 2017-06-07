@@ -21,3 +21,40 @@ aws sqs send-message --queue-url "https://queue.amazonaws.com/814129119746/test1
 6.Receive message
 
 aws sqs receive-message --queue-url "https://queue.amazonaws.com/814129119746/test123" 
+
+7. Receive Message Long Poll
+
+aws sqs receive-message --queue-url "https://queue.amazonaws.com/814129119746/test123" --wait-time-seconds 20
+
+We can add more params like
+ --max-number-of-messages (default is 1)
+--visibility-timeout (duration received items are hidden from subsequent request. If the receiver does not process the recived message and deletes the same from queue 
+before this time the same message is available for subsequent request)
+
+--attribute-names All
+--message-attribute-name (All)
+
+Note : --receive-request-attempt-id applies for FIFO queues.
+
+8. List queues based on prefix
+
+aws sqs list-queues --queue-name-prefix "test"
+
+9. Send Message batch
+
+aws sqs send-message-batch --queue-url "https://queue.amazonaws.com/814129119746/test123" --entries file://C:/SPB_Data/AWS-Training-SQS/sampledata/input/send-message-batch.json
+
+
+10. Delete message
+
+ aws sqs delete-message  --queue-url "https://queue.amazonaws.com/814129119746/test123" --receipt-handle "AQEBYUo1cB6SBVy5/EXkXDVq3OQMZ1EmVOgqLkDI1yiQm1i+x64S93zmGRAvrw+J6WsSi2FIbdt2Bibg/uWVgG3KbhaQu0sWKHTX8Cb1ZDM/zMTcLKFG2YQf+uc+ycv4GirRybs6WsSSh4dFBwv66vfWIIqVThkLj/On13VxVa3n5aObivq2bCAymBuPFovsMQAiJkeg4CTnmDgBKbUxoi5Xiky2nP8OTdMia8cxRG8v6i4v1+crPIF3zwpAGFruvosI3xYbq+JUzpARH6h/Cwx6dSU2P7HROsEsyjjr2G8A7H46pSwHtqLTeQ9Xd15DTgxv4U6X+VJcEs1dMdxiSOW+OpnqAIWOjHED/UcLBIV3QJvJWlUxGJeuQPr8txcFgylU"
+
+
+11. Delete Queue
+
+ aws sqs  delete-queue   --queue-url  "https://queue.amazonaws.com/814129119746/test123"
+
+
+
+
+
